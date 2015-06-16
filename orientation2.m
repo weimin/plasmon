@@ -9,7 +9,7 @@ mask2 = array2(:,2) < ymin + (ymax-ymin)/2;
 mask = mask1 & mask2;
 x = array2(:,1); y = array2(:,2);
 array2 = [x(mask) y(mask)];
-plot(array2(:,1),array2(:,2),'o');
+plot(array2(:,1),array2(:,2),'x');
 %Use only the inner portion
 xmin = min(array2(:,1)); xmax = max(array2(:,1));
 ymin = min(array2(:,2)); ymax = max(array2(:,2));
@@ -69,10 +69,10 @@ end
 end
 hold on;
 %Plot the dots and the angles
-plot(points(:,1),points(:,2),'x');
-plot(current(:,1),current(:,2),'+g');
-plot(nearest_neighbour(:,1),nearest_neighbour(:,2),'*r');
-quiver(array3(:,1),array3(:,2),vectors(:,1),vectors(:,2));
+%plot(points(:,1),points(:,2),'+');
+%plot(current(:,1),current(:,2),'+g');
+%plot(nearest_neighbour(:,1),nearest_neighbour(:,2),'*r');
+quiver(array3(:,1),array3(:,2),vectors(:,1),vectors(:,2),'m');
 xlabel('x-coordinates'); ylabel('y-coordinates'); title('')
 %----------------------------------
 %Calculate Orientation Correlation
