@@ -79,8 +79,8 @@ xlabel('x-coordinates'); ylabel('y-coordinates'); title('')
 %----------------------------------
 %Setup the bins
 bboxDim = max(array2) - min(array2);
-maxDist = 1*min(bboxDim);
-nHist = 30; %adjust if necessary
+maxDist = 0.5*min(bboxDim);
+nHist = 20; %adjust if necessary
 edges = linspace(0, maxDist, nHist)';
 dedge = edges(2)-edges(1);
 correlation_vector = zeros(1,length(edges));
@@ -93,7 +93,7 @@ distance_vector = ones(1,size(neighbours,1))'*current - neighbours; %Distance be
 distance_vector_norm = sqrt(distance_vector(:,1).^2 + distance_vector(:,2).^2); %Normalizedf distance from previous line
 [vec ind] = sort(distance_vector_norm); %Sort distance from nearest to farthest
 angle2 = angles(ind); %Rearrange angles according to distance
-length(ind)
+length(ind);
 j = sqrt(-1);
 correlations = exp(j*6*current_angle).*exp(-j*6*angle2); %Compute Correlations
 [bincounts,ind2] = histc(vec,edges);
@@ -109,4 +109,10 @@ end
 correlation_vector = correlation_vector/length(array3);
 figure();
 plot(correlation_vector,'x');
-xlabel('distance'); ylabel('orientation correlation'); title('Orientation correlation');
+xlabel('distance (bin number)'); ylabel('orientation correlation'); title('Orientation correlation');
+% a = 0.01708;
+% b = 0.7331;
+% x = 1:1:length(correlation_vector);
+% y = a*exp(-b*x)+0.6365;
+% hold on;
+% plot(x,y);
